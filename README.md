@@ -108,9 +108,11 @@ The quickest way to do this is to find PoCs on Github. You can use dorks on your
 
 Importance of this cannot be overstated:
 
-**ALWAYS READ THE CODE OF POCS**
-**ALWAYS READ THE CODE OF POCS**
-**ALWAYS READ THE CODE OF POCS**
+**ALWAYS READ THE CODE OF POCS!!**
+
+**ALWAYS READ THE CODE OF POCS!!**
+
+**ALWAYS READ THE CODE OF POCS!!**
 
 If you don't read and understand the PoC, don't use it.
 
