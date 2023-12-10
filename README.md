@@ -93,6 +93,19 @@ For web applications, you can use the favicon's hash (if there's a favicon). To 
 
 For an exploration of favicons, use https://faviconmap.shodan.io/
 
+### Other internet search engines
+
+- https://viz.greynoise.io/ - Greynoise is like a "reverse Shodan". It can be useful for us to find infected hosts that are acting as part of a botnet. it has a network of honeypots (a lot of which will show up in our shodan searches) that pretends to be certain services and captures exploits, then tag them by destination ports, IP information and CVEs attempted to exploit. 
+
+- https://search.censys.io - Censys is a more feature complete and aggressive scanner (scans a lot more services and ports); but their API is way less accessible than Shodan in terms of pricing and restrictions
+
+- https://www.criminalip.io/
+
+- https://www.zoomeye.org/ - a Shodan-like service that's more geared for the Asian internet
+
+- https://leakix.net
+
+
 ## Note on VPNs
 
 For any active network interaction with other servers, **use a VPN if you want to protect your home address**. Using a VPN exit region as the same country as the server you're investigating (e.g. For Australia, use a VPN location in Sydney) can help put your target at ease; where as using offshore VPN locations in a more suspicious country might put them on alert.
@@ -209,7 +222,7 @@ LinkedIn sucks but if you have an account, you can lookup people on LinkedIn onc
 
 If you can find a trusted back-channel contact (such as Direct Messaging someone who works there, or someone who works at their IT MSP or Security MSSP, or someone who knows someone..) to send the organization a tip, then utilize that. Send the notification on multiple channels if possible to amplify trust and to sound less scammy (for example, through both email and phone call, or through both back-channel and email).
 
-The highest fidelity notifications possible is in person. You could print out the vulnerability alert, such as an ACSC cyber.gov.au issued alert and write down details of their vulnerable hosts, then drop it at the organization's front desk along with a treat for their IT and security teams (like [cybermuffins](https://cybermuffins.org)).
+The highest fidelity notifications possible is in person. You could print out the vulnerability alert, such as an ACSC cyber.gov.au issued alert and write down details of their vulnerable hosts, then drop it at the organization's front desk along with a treat for their IT and security teams to incentivize patching (like [cybermuffins](https://cybermuffins.org)).
 
 
 
