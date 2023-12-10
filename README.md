@@ -183,11 +183,55 @@ Once you identify vulnerable hosts on Shodan, you should use Shodan's API to get
 
 Use the shodan CLI (`pip3 install shodan`) to count the result before you download it, so that you know if you have enough credit.
 
-For example:
+You can get statistics based on different facets (like as `port`, `country`, `org` and `product`) by running `shodan stats` with your query
 
-`shodan count 'your query'`
+- with default facets
 
-Divide the number of results by 100 to get how many credit you'd spend, then, you can use this [script](https://github.com/directcyber/scripts/blob/main/shodan_query_get_all.py) to get all results in JSON format for ease of use.
+```
+$ shodan stats '.org.au'
+Top 3 Results for Facet: country
+AU                                    14
+US                                     7
+NZ                                     1
+
+Top 10 Results for Facet: org
+NetActuate, Inc                        6
+Amazon Corporate Services Pty Ltd           5
+Mammoth Media Pty Ltd                  3
+SYNERGY WHOLESALE PTY LTD              2
+Amazon.com, Inc.                       1
+Hostopia Australia Pty Ltd             1
+Linode                                 1
+OVH Singapore PTE. LTD                 1
+Telstra Internet                       1
+University of Otago                    1
+```
+
+- with specific facets
+
+```
+$ shodan stats --facets port,product '.org.au'
+Top 4 Results for Facet: product
+Postfix smtpd                          6
+Apache httpd                           4
+nginx                                  3
+ProFTPD                                1
+
+Top 7 Results for Facet: port
+80                                     7
+443                                    5
+25                                     3
+21                                     2
+465                                    2
+587                                    2
+53                                     1
+```
+
+You can count the total number of results by using `shodan count 'your query'`
+
+Running stats or count does not consume query credits. You can get your remaining credits this month by running `shodan info`
+
+Divide the count of results by 100 to get how much credit you'd spend and if you have enough, then, you can use this [script](https://github.com/directcyber/scripts/blob/main/shodan_query_get_all.py) to get all results in JSON format for ease of use.
 
 `export SHODAN_KEY=your_shodan_key_here`
 
