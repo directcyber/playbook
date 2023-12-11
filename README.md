@@ -145,7 +145,7 @@ That means checking scripts should not store any sensitive data about the target
 
 - **Modification** includes if any new posts, database entries, users etc. are made. If an exploit adds a user for a PoC check, don't use it. Also includes things like stored XSS. Creation of new log lines do not count, because otherwise any web browsing would be illegal.
 
-Note that it is not a criminal offense to attempt; that means if you accidentally other otherwise ran something that may cause damage to another system, but it did not cause actual material impact.
+Note that it is not **a criminal offense to attempt**; that means if you accidentally or otherwise ran something that may cause damage to another system, but it did not cause actual material impact.
 
 **By using this playbook, you acknowledge that DirectCyber is NOT RESPONSIBLE for any law you violate following it.** This playbook is designed for you to safely perform a service to society without breaking the law.
 
