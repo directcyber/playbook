@@ -163,6 +163,9 @@ To use a nuclei template to scan a list of hosts, put IP addresses / domain name
 `nuclei -list ips.txt -t ./templates/CVE-2019-0230.yaml -json-export output.json`
 
 
+**DO NOT USE MULTIPLE TEMPLATES AT THE SAME TIME, AND ESPECIALLY DO NOT SCAN HOSTS WITH ALL TEMPLATES.**
+
+Nuclei is a very fast scanner, and it can cause availability impact to the targets if you scan aggressively, as well as trigger noisy and unnecessary alerts. Only use Nuclei to validate one vulnerability on a group of hosts at a time.
 
 ### Writing your own checker
 
