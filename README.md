@@ -57,13 +57,17 @@ That's just the start, don't limit yourself to those sources. Look widely, [Duck
 
 ## Vulnerable hosts identification
 
-We can use [Shodan](https://shodan.io) to query for software that might be vulnerable to a CVE, based on a [filters](https://www.shodan.io/search/filters). For the purposes of local response, always add `country:AU` (or whatever the intended region is) for the search.
+We can use [Shodan](https://shodan.io) to query for software that might be vulnerable to a CVE, based on [filters](https://www.shodan.io/search/filters). For the purposes of local response, always add `country:AU` (or whatever the intended region is) for the search.
 
 The Shodan CLI should first be used to gather stats (https://help.shodan.io/command-line-interface/3-stats) of your query, because getting results cost Shodan credits. Each 100 results (which is the standard size of a result page) cost 1 credit. Each [membership-tier user](https://account.shodan.io/billing) has 100 query credits per month, which means 10000 results.
 
 ### Finding queries
 
 Find analysis of the vulnerability online, and look for people posting shodan queries and screenshots. Screenshots of shodan results can sometimes contain queries or a hint of what they query might be.
+
+The [awesome-shodan-queries](https://github.com/jakejarvis/awesome-shodan-queries) repo has a lot of example shodan queries.
+
+You can also find shared queries by other users by searching in Shodan's Explore area like so: https://www.shodan.io/explore/search?query=citrix
 
 ### Using keywords
 
@@ -95,7 +99,7 @@ For an exploration of favicons, use https://faviconmap.shodan.io/
 
 ### Other internet search engines
 
-- https://viz.greynoise.io/ - Greynoise is like a "reverse Shodan". It can be useful for us to find infected hosts that are acting as part of a botnet. it has a network of honeypots (a lot of which will show up in our shodan searches) that pretends to be certain services and captures exploits, then tag them by destination ports, IP information and CVEs attempted to exploit. 
+- https://viz.greynoise.io/ - Greynoise is like a "reverse Shodan". It's useful for finding infected hosts that are acting as part of a botnet. It has a network of honeypots (a lot of which will show up in our shodan searches) that pretends to be certain services and captures exploits, then tags them by destination ports, IP information and vulnerabilities the source IP attempted to exploit. 
 
 - https://search.censys.io - Censys is a more feature complete and aggressive scanner (scans a lot more services and ports); but their API is way less accessible than Shodan in terms of pricing and restrictions
 
@@ -132,7 +136,6 @@ If you don't read and understand the PoC, don't use it.
 Look for checker scripts that can determine if the host is vulnerable without any modification to the target system. If the PoC contains both a check and an exploit, **disarm the exploit functionality** and **make sure it's disarmed** before running it against any live system.
 
 
-
 ### Legal concerns
 
 Proof of concepts can cause unknown harm to your own system and/or someone else's, and doing so would be illegal. The wording in [Cybercrime Act of 2001](https://www.legislation.gov.au/Details/C2004C01213) prohibits unauthorized **Access**, **Modification** and **Impairment** of a computer system. 
@@ -148,6 +151,17 @@ That means checking scripts should not store any sensitive data about the target
 Note that it is not **a criminal offense to attempt**; that means if you accidentally or otherwise ran something that may cause damage to another system, but it did not cause actual material impact.
 
 **By using this playbook, you acknowledge that DirectCyber is NOT RESPONSIBLE for any law you violate following it.** This playbook is designed for you to safely perform a service to society without breaking the law.
+
+### Using Nuclei
+
+ProjectDiscovery's [Nuclei](https://github.com/projectdiscovery/nuclei) is a very powerful scanner that has a lot of community contributed checkers that are safe to use for checking if a host is vulnerable to a CVE without breaking the law. These community Nuclei templates can be found in https://github.com/projectdiscovery/nuclei-templates. 
+
+**MAKE SURE YOU READ AND UNDERSTAND THE TEMPLATE BEFORE USE.**
+
+To use a nuclei template to scan a list of hosts, put IP addresses / domain names in a text file (one line each) and specify the template path using `-t`:
+
+`nuclei -list ips.txt -t ./templates/CVE-2019-0230.yaml -json-export output.json`
+
 
 
 ### Writing your own checker
@@ -175,6 +189,8 @@ else:
 ```
 
 This script does not break the law because it does not constitute any authorized access, modification or impairment of the target. (Also, it's basically just web browsing)
+
+Alternatively, you can also write your own Nuclei template and run that instead. See ["Introduction to Nuclei Templates"](https://docs.projectdiscovery.io/templates/introduction) for more information.
 
 
 ## Host to org correlation
@@ -247,6 +263,8 @@ The org and asn fields are the network names of the hosting provider (unless the
 
 You can lookup those domains in a search engine to determine the nature of the organization and what they do for prioritization of alerts.
 
+## Finding organizational contacts
+
 ### security.txt
 
 [RFC 9116](https://www.rfc-editor.org/rfc/rfc9116) is the standard for `security.txt`, which is a file at the root of a website (e.g. https://directcyber.com.au/security.txt) that contains contact information for reporting security vulnerabilities.
@@ -257,9 +275,14 @@ WHOIS lookups of the domain (run `whois example.com`) can be used to find potent
 
 Similar details can be found on a more modern system called RDAP (https://client.rdap.org/)
 
-### Linkedin
+### LinkedIn
 
 LinkedIn sucks but if you have an account, you can lookup people on LinkedIn once you've found the organization. Focus on IT and security roles and see if you can connect with them or guess their email address based on known email formats for that organization (like `first.last@example.com` or `flast@example.com` or `firstname@example.com`)
+
+### phonebook.cz
+
+If you have a [IntelX](https://intelx.io/) account (or sign up for one), you can use https://phonebook.cz/ to lookup emails for a specific domain. This will give you a good idea of what email formats look like for the organization.
+
 
 ## Sending notifications
 
