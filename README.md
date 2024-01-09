@@ -101,11 +101,13 @@ For an exploration of favicons, use https://faviconmap.shodan.io/
 
 - https://viz.greynoise.io/ - Greynoise is like a "reverse Shodan". It's useful for finding infected hosts that are acting as part of a botnet. It has a network of honeypots (a lot of which will show up in our shodan searches) that pretends to be certain services and captures exploits, then tags them by destination ports, IP information and vulnerabilities the source IP attempted to exploit. 
 
+- https://fofa.info - has a better product tagging system than Shodan, and there's a good amount of documentation on  [Awesome-FOFA](https://github.com/FofaInfo/Awesome-FOFA) such as a [guide to tracking APT infrastructure via intel pivoting](https://github.com/FofaInfo/Awesome-FOFA/blob/main/Basic%20scenario/Conducting%20APT%20Bitter%20Tracking%20Operation%20Using%20FOFA.md)
+
+- https://www.criminalip.io/ - has semi-frequent blogs on finding devices on the internet based on new trending vulns
+
 - https://search.censys.io - Censys is a more feature complete and aggressive scanner (scans a lot more services and ports); but their API is way less accessible than Shodan in terms of pricing and restrictions
 
-- https://www.criminalip.io/
-
-- https://www.zoomeye.org/ - a Shodan-like service that's more geared for the Asian internet
+- https://www.zoomeye.org/
 
 - https://leakix.net
 
