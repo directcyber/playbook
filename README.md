@@ -36,6 +36,10 @@ These official sources are great for current government alerts:
 - https://www.cisa.gov/news-events/cybersecurity-advisories
 - https://www.cisa.gov/known-exploited-vulnerabilities-catalog
 
+Github has an extensive security advisory DB that covers third party vulns and allow filtering:
+
+- https://github.com/advisories?query=severity%3Acritical
+
 CVEs being discussed on Mastodon / Fediverse sites:
 
 - https://fedisecfeeds.github.io/
