@@ -101,6 +101,8 @@ For web applications, you can use the favicon's hash (if there's a favicon). To 
 
 For an exploration of favicons, use https://faviconmap.shodan.io/
 
+Then you can search the favicon hash on Shodan like so: `http.favicon.hash:12345`
+
 ### Other internet search engines
 
 - https://viz.greynoise.io/ - Greynoise is like a "reverse Shodan". It's useful for finding infected hosts that are acting as part of a botnet. It has a network of honeypots (a lot of which will show up in our shodan searches) that pretends to be certain services and captures exploits, then tags them by destination ports, IP information and vulnerabilities the source IP attempted to exploit. 
@@ -199,7 +201,7 @@ else:
 
 This script does not break the law because it does not constitute any authorized access, modification or impairment of the target. (Also, it's basically just web browsing)
 
-Alternatively, you can also write your own Nuclei template and run that instead. See ["Introduction to Nuclei Templates"](https://docs.projectdiscovery.io/templates/introduction) for more information.
+Alternatively, you can also write your own Nuclei template and run that instead. See ["Introduction to Nuclei Templates"](https://docs.projectdiscovery.io/templates/introduction) for more information, and see DirectCyber's own checker scripts and nuclei-templates that are carefully made to be as non-intrusive as possible https://github.com/directcyber/checkers
 
 
 ## Host to org correlation
